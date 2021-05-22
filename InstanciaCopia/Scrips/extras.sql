@@ -6,4 +6,4 @@
 --DELETE FROM pg_catalog.pg_publication_rel
 
 --select drop_replication_slot('bsub');
-select pg_drop_replication_slot('bsub11') from pg_replication_slots where slot_name = 'bsub11';
+select pg_drop_replication_slot('bsub16') from pg_replication_slots where slot_name = 'bsub16';
