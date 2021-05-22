@@ -81,3 +81,88 @@ TABLESPACE pg_default;
 
 ALTER TABLE public."film_ME"
     OWNER to postgres;
+	
+	-- Table: public.Central
+
+-- DROP TABLE public."Central";
+
+CREATE TABLE public."Central"
+(
+    central_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    film_id integer NOT NULL,
+    store_id integer NOT NULL,
+    language_id integer NOT NULL,
+    time_id integer NOT NULL,
+    duration_id integer NOT NULL,
+    CONSTRAINT "Central_pkey" PRIMARY KEY (central_id),
+    CONSTRAINT durationid FOREIGN KEY (duration_id)
+        REFERENCES public."duraciones_ME" (rental_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT filmfk FOREIGN KEY (film_id)
+        REFERENCES public."film_ME" ("IDFilm") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT lenguajefk FOREIGN KEY (language_id)
+        REFERENCES public."lenguaje_ME" (language_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT storefk FOREIGN KEY (store_id)
+        REFERENCES public."lugar_ME" (store_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT timefk FOREIGN KEY (time_id)
+        REFERENCES public."tiempo_ME" (rental_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Central"
+    OWNER to postgres;
+	
+-- Table: public.Central2
+
+-- DROP TABLE public."Central2";
+
+CREATE TABLE public."Central2"
+(
+    central2_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    film_id integer,
+    store_id integer,
+    language_id integer,
+    time_id integer,
+    duration_id integer,
+    CONSTRAINT "Central2_pkey" PRIMARY KEY (central2_id),
+    CONSTRAINT "addressid-address-fk" FOREIGN KEY (store_id)
+        REFERENCES public.address (address_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "durationid-duration-fk" FOREIGN KEY (duration_id)
+        REFERENCES public.duration (duration_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "filmid-film-fk" FOREIGN KEY (film_id)
+        REFERENCES public.film (film_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "languageid-language-fk" FOREIGN KEY (language_id)
+        REFERENCES public.language (language_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "timeid-time-fk" FOREIGN KEY (time_id)
+        REFERENCES public."time" (time_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Central2"
+    OWNER to postgres;
