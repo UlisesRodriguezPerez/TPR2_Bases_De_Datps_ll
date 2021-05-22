@@ -52,8 +52,8 @@ AS $BODY$
 		
 
 		--insert into pruebas(prueba,prueba2)VALUES(idfilm,idstore);
-		insert into "Central"(film_id,store_id,language_id,time_id,duration_id)
-		values(idfilm,idstore,idlenguage,idtime,idduracion);
+		insert into "Central"(film_id,store_id,language_id,time_id,duration_id,monto)
+		values(idfilm,idstore,idlenguage,idtime,idduracion,0);
 		contador := contador + 1;
 	END loop;
 		
