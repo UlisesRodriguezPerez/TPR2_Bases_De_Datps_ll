@@ -2,7 +2,7 @@ CREATE OR REPLACE PROCEDURE cargarDuracionesME() AS
 $$
 DECLARE 
 	rowRental rental%rowtype;
-
+	diasduracion integer;
 BEGIN
     FOR rowRental in SELECT * FROM rental LOOP
         INSERT INTO "duraciones_ME" VALUES(rowRental.rental_id, 
@@ -10,4 +10,4 @@ BEGIN
     END LOOP;
 END
 $$
-LANGUAGE plpgsql;
+LANGUAGE 'plpgsql';
