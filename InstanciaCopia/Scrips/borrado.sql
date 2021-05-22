@@ -1,0 +1,15 @@
+DELETE FROM actor;
+DELETE FROM address;
+DELETE FROM category;
+DELETE FROM city;
+DELETE FROM country;
+DELETE FROM customer;
+DELETE FROM film;
+DELETE FROM film_actor;
+DELETE FROM film_category;
+DELETE FROM inventory;
+DELETE FROM language;
+DELETE FROM payment;
+DELETE FROM rental;
+DELETE FROM staff;
+DELETE FROM store;
