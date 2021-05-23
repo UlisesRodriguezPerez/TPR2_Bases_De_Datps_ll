@@ -24,7 +24,7 @@ select date_part('year',  rental_date) as anno,
        sum(amount)
 from rental r inner join payment p on r.rental_id = p.rental_id
 group by rollup (anno, mes)
-order by anno, mes
+order by anno, mes;
 
 
 --	hacer un cubo por año y categoría de película para el número de alquileres y el monto cobrado
@@ -58,7 +58,7 @@ select DME."diasDuracion" as duracion,
         count(Ce.duration_id), sum(Ce.monto)
 from "Central" Ce 
 inner join "duraciones_ME" DME on Ce.duration_id = DME.rental_id
-where DME."diasDuracion" 0 AND Ce.monto > 0
+where DME."diasDuracion" > 0 AND Ce.monto > 0
 group by DME."diasDuracion"
 order by DME."diasDuracion";
 
@@ -70,7 +70,7 @@ from "Central" Ce
 inner join "tiempo_ME" TME ON Ce."time_id" = TME."rental_id"
 WHERE Ce.MONTO > 0
 group by rollup (TME.anno, TME.mes)
-order by TME.anno, TME.mes
+order by TME.anno, TME.mes;
 
 --	hacer un cubo por año y categoría de película para el número de alquileres y el monto cobrado
 select  TME.anno as anno, FME."Categoria",

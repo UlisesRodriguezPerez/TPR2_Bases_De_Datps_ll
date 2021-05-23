@@ -1,7 +1,7 @@
 -- FUNCTION: public.buscarpelicula(character varying, character varying)
 
 -- DROP FUNCTION public.buscarpelicula(character varying, character varying);
-
+--SELECT buscarpelicula('Academy Dinosaur','English')
 CREATE OR REPLACE FUNCTION public.buscarpelicula(
 	ptitle character varying,
 	plenguaje character varying)
