@@ -1,3 +1,4 @@
+--call cargardatos()
 CREATE OR REPLACE PROCEDURE cargarDatos() AS
 $$
 DECLARE
@@ -41,6 +42,8 @@ BEGIN
 		INNER JOIN store s ON s.store_id = i.store_id
 		INNER JOIN payment pay ON pay.rental_id = rowRental.rental_id;
 
+		IF film_id is not null then
+		--WHERE r.inventory_id is not null;
 		INSERT INTO "Central"(film_id, store_id, language_id, time_id, duration_id, monto) 
 							  VALUES(film_id,
 									 store_id, 
@@ -48,6 +51,8 @@ BEGIN
 									 rowRental.rental_id, 
 									 rowRental.rental_id, 
 									 amount);
+									 --WHERE film_id is not null;
+									END IF;
 	END LOOP;
 	
 END;

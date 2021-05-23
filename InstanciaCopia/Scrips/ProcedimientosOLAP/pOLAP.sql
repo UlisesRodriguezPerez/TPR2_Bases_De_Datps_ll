@@ -55,10 +55,11 @@ order by TME.mes, FME."Categoria";
 
 -- 	dar el número de alquileres y el monto cobrado, por duración del préstamo
 select DME."diasDuracion" as duracion,
-        count(Ce.duration_id), sum(Ce.monto)
+        count(*), sum(Ce.monto)
 from "Central" Ce 
 inner join "duraciones_ME" DME on Ce.duration_id = DME.rental_id
-where DME."diasDuracion" > 0 AND Ce.monto > 0
+--inner join rental r on r.rental_id = DME.rental_id
+where DME."diasDuracion" > 0 AND Ce.monto > 0 
 group by DME."diasDuracion"
 order by DME."diasDuracion";
 
