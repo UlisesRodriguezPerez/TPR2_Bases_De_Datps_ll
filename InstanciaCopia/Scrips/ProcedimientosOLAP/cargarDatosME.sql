@@ -16,7 +16,6 @@ BEGIN
 	TRUNCATE TABLE "tiempo_ME" RESTART IDENTITY CASCADE;
 	TRUNCATE TABLE "duraciones_ME" RESTART IDENTITY CASCADE;
 	
-	
 	CALL cargarDuracionesME();
 	CALL cargarLenguajeME();
 	CALL cargarLugarME();
@@ -50,6 +49,7 @@ BEGIN
 									 rowRental.rental_id, 
 									 amount);
 	END LOOP;
+	
 END;
 $$
 LANGUAGE plpgsql;

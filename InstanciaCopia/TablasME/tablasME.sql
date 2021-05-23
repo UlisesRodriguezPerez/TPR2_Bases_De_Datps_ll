@@ -14,6 +14,7 @@ TABLESPACE pg_default;
 ALTER TABLE public."duraciones_ME"
     OWNER to postgres;
 	
+CREATE INDEX indiceDuraciones ON "duraciones_ME"(rental_id);
 -- Table: public.tiempo_ME
 
 -- DROP TABLE public."tiempo_ME";
@@ -32,6 +33,8 @@ TABLESPACE pg_default;
 ALTER TABLE public."tiempo_ME"
     OWNER to postgres;
 	
+CREATE INDEX indicetime ON "tiempo_ME"(rental_id,mes);
+	
 -- Table: public.lugar_ME
 
 -- DROP TABLE public."lugar_ME";
@@ -49,6 +52,7 @@ TABLESPACE pg_default;
 ALTER TABLE public."lugar_ME"
     OWNER to postgres;
 	
+CREATE INDEX indiceLugar ON "lugar_ME"(store_id);
 -- Table: public.lenguaje_ME
 
 -- DROP TABLE public."lenguaje_ME";
@@ -65,6 +69,8 @@ TABLESPACE pg_default;
 ALTER TABLE public."lenguaje_ME"
     OWNER to postgres;
 	
+	
+CREATE INDEX indiceLenguaje ON "lenguaje_ME"(language_id);
 -- Table: public.film_ME
 
 -- DROP TABLE public."film_ME";
@@ -84,7 +90,9 @@ ALTER TABLE public."film_ME"
 	
 	-- Table: public.Central
 
--- DROP TABLE public."Central";
+-- DROP TABLE public."Central
+
+CREATE INDEX indicePelicula ON "film_ME"("IDFilm");
 
 CREATE TABLE public."Central"
 (
